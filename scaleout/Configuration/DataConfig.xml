@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Environment>
+    <!-- TimeOut -->
+    <TimeOut>10</TimeOut>
+
+
+    <!-- Credentials -->
+    <user>stas.d</user>
+    <password>Panass5942$$</password>
+    <slaveUser>observer</slaveUser>
+    <slavePass>0b$Sec!</slavePass>
+
+
+    <!-- Web -->
+    <PlatformName>web</PlatformName>
+    <BrowserName>Chrome</BrowserName>
+    <url_master>https://10.0.0.152/observer/cyber/portal/#/login//</url_master>
+    <url_slave1>https://192.168.1.124:8443/observer/cyber/portal/#/login//</url_slave1>
+
+    <url_slave2>https://192.168.1.19/observer/cyber/portal/#/login//</url_slave2>
+
+
+    <!--RestAPI-->
+//
+</Environment>
