@@ -15,6 +15,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class Verifications extends CommonOps {
+
     public static void partOfTextInElement(WebElement elem, String expectedValue) {
         wait.until(ExpectedConditions.visibilityOf(elem));
         assertTrue(elem.getText().contains(expectedValue));

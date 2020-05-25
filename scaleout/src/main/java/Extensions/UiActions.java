@@ -20,9 +20,10 @@ public class UiActions extends CommonOps {
 
     public static void updateText(WebElement elem, String value) {
         wait.until(ExpectedConditions.visibilityOf(elem));
-        elem.sendKeys(value);
+        if (value != null) {
+            elem.sendKeys(value);
+        }
     }
-
 
     public static void updateDropDown(WebElement elem, String value) {
         wait.until(ExpectedConditions.visibilityOf(elem));

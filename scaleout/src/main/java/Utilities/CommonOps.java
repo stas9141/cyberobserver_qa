@@ -2,7 +2,7 @@ package Utilities;
 
 import WorkFlows.WebFlows;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -18,16 +18,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-public class CommonOps extends Base
-{
-    public static String getData(String nodeName)
-    {
+public class CommonOps extends Base {
+    public static String getData(String nodeName) {
         File fXmlFile;
         DocumentBuilderFactory dbFactory;
         DocumentBuilder dBuilder;
         Document doc = null;
-        try
-        {
+        try {
 
             fXmlFile = new File("./Configuration/DataConfig.xml");
             dbFactory = DocumentBuilderFactory.newInstance();
@@ -35,17 +32,14 @@ public class CommonOps extends Base
             doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
 
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("Error Reading XML file: " + e);
-        } finally
-        {
+        } finally {
             return doc.getElementsByTagName(nodeName).item(0).getTextContent();
         }
     }
 
-    public static void initBrowser(String browserType)
-    {
+    public static void initBrowser(String browserType) {
         if (browserType.equalsIgnoreCase("chrome"))
             driver = initChromeDriver();
         else if (browserType.equalsIgnoreCase("firefox"))
@@ -62,22 +56,19 @@ public class CommonOps extends Base
 
     }
 
-    public static WebDriver initChromeDriver()
-    {
+    public static WebDriver initChromeDriver() {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         return driver;
     }
 
-    public static WebDriver initFFDriver()
-    {
+    public static WebDriver initFFDriver() {
         WebDriverManager.firefoxdriver().setup();
         WebDriver driver = new FirefoxDriver();
         return driver;
     }
 
-    public static WebDriver initIEDriver()
-    {
+    public static WebDriver initIEDriver() {
         WebDriverManager.iedriver().setup();
         WebDriver driver = new InternetExplorerDriver();
         return driver;
@@ -86,14 +77,9 @@ public class CommonOps extends Base
 
 
 
-    public static int getUserCount() {
-        return slave124Home.users.size();
-    }
-
 
     @BeforeClass
-    public void startSession()
-    {
+    public void startSession() {
 
         if (getData("PlatformName").equalsIgnoreCase("web"))
             initBrowser(getData("BrowserName"));
@@ -103,20 +89,39 @@ public class CommonOps extends Base
             throw new RuntimeException("Invalid platform name");
         ManagePages.init();
 
-        WebFlows.login(getData("user"),getData("password"));
+        WebFlows.login(getData("user"), getData("password"));
 
     }
 
 
     @AfterMethod
-    public void afterMethod()
-    {
+    public void afterMethod() {
         driver.get(getData("url_master"));
     }
 
     @AfterClass
-    public void closeSession()
-    {
+    public void closeSession() {
         driver.quit();
     }
+
+
+
+    public  static boolean isElementPresent(By elem) {
+        try{
+            driver.findElement(elem);
+            return true;
+        } catch (NoSuchElementException e){
+            return false;
+        }
+    }
+
+    public  static boolean isAlertPresent() {
+        try{
+            driver.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e){
+            return false;
+        }
+    }
+
 }

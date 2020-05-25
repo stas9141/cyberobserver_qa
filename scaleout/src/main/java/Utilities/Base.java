@@ -1,8 +1,6 @@
 package Utilities;
 
-import PageObjects.CyberObserver.MasterLeftMenuPage;
-import PageObjects.CyberObserver.MasterLeftSubMenuPage;
-import PageObjects.CyberObserver.MasterRemoteMachinesPage;
+import PageObjects.CyberObserver.RemoteMachinesPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,7 +22,7 @@ public class Base
     public static PageObjects.CyberObserver.Slave124AddNewUserPage slave124AddNewUser;
     public static PageObjects.CyberObserver.MasterLeftMenuPage masterLeftMenu;
     public static PageObjects.CyberObserver.MasterLeftSubMenuPage masterLeftSubMenu;
-    public static PageObjects.CyberObserver.MasterRemoteMachinesPage masterRemoteMachines;
+    public static RemoteMachinesPage masterRemoteMachines;
 
 
     public static Connection con;

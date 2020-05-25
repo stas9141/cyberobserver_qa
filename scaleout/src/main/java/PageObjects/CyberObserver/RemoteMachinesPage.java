@@ -6,13 +6,13 @@ import org.openqa.selenium.support.How;
 
 import java.util.List;
 
-public class MasterRemoteMachinesPage
+public class RemoteMachinesPage
 {
     @FindBy(how = How.XPATH, using = "//h4[@class='systemTitle ng-binding ng-scope']")
     public WebElement txt_mainHeader;
 
     @FindBy(how = How.XPATH, using = "//li[@ng-repeat='remoteMachine in remoteMachinesList']")
-    public List<WebElement> remoteMachines;
+    public List<WebElement> remoteMachinesList;
 
     @FindBy(how = How.ID, using = "name")
     public WebElement txt_machineName;
@@ -28,4 +28,16 @@ public class MasterRemoteMachinesPage
 
     @FindBy(how = How.ID, using = "//button[@type='submit']//i")
     public WebElement btn_save;
+
+    @FindBy(how = How.ID, using = "//i[@ng-click='getRemoteMachine(remoteMachine);']")
+    public WebElement btn_edit;
+
+    @FindBy(how = How.ID, using = "//i[@ng-click='removeRemoteMachine(remoteMachine);']")
+    public WebElement btn_delete;
+
+    @FindBy(how = How.XPATH, using = "//li[@ng-repeat='remoteMachine in remoteMachinesList'][2]")
+    public WebElement first_slave;
+
+
+
 }

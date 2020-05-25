@@ -1,8 +1,6 @@
 package Utilities;
 
-import PageObjects.CyberObserver.MasterLeftMenuPage;
-import PageObjects.CyberObserver.MasterLeftSubMenuPage;
-import PageObjects.CyberObserver.MasterRemoteMachinesPage;
+import PageObjects.CyberObserver.RemoteMachinesPage;
 import org.openqa.selenium.support.PageFactory;
 
 public class ManagePages extends Base
@@ -16,7 +14,7 @@ public class ManagePages extends Base
         slave124AddNewUser = PageFactory.initElements(driver, PageObjects.CyberObserver.Slave124AddNewUserPage.class);
         masterLeftMenu = PageFactory.initElements(driver, PageObjects.CyberObserver.MasterLeftMenuPage.class);
         masterLeftSubMenu = PageFactory.initElements(driver, PageObjects.CyberObserver.MasterLeftSubMenuPage.class);
-        masterRemoteMachines = PageFactory.initElements(driver, PageObjects.CyberObserver.MasterRemoteMachinesPage.class);
+        masterRemoteMachines = PageFactory.initElements(driver, RemoteMachinesPage.class);
 
     }
 }
