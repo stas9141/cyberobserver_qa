@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 
 
-
 public class UiActions extends CommonOps {
     public static void click(WebElement elem) {
         wait.until(ExpectedConditions.elementToBeClickable(elem));
@@ -35,14 +34,23 @@ public class UiActions extends CommonOps {
         action.moveToElement(elem1).moveToElement(elem2).click().build().perform();
     }
 
-    public static void copyTokenToClipboard(WebElement elem){
+    public static void copyTokenToClipboard(WebElement elem) {
         wait.until(ExpectedConditions.elementToBeClickable(elem));
         elem.click();
+        //String x = Keys.CONTROL + "v"
     }
 
 
     public static void pastText(WebElement elem) {
         wait.until(ExpectedConditions.visibilityOf(elem));
         elem.sendKeys(Keys.CONTROL + "v");
+    }
+
+    public String getElementText(WebElement elem){
+        return elem.getText();
+    }
+
+    public void enterTextIntoField(String value, WebElement elem){
+        elem.sendKeys(value);
     }
 }
